@@ -10,12 +10,14 @@
   padding: 0;
   overflow: hidden;
   background-color: white;
+  width:100%;
+  
    }
   
 
 .o {
   float: left;
-  padding:30px;
+  padding:20px;
   bottom:0;
   font-size:32px;
   font-family: 'Tangerine', cursive;
@@ -36,21 +38,29 @@
  li{
   font-family: 'Tangerine', cursive;
  }
-
+.u a{
+  text-decoration:none;
+  transition: 0.8s;
+  font-size:25px
+}
 </style>
-<body style="position:fixed">
-<ul >
-   <b> <li style="font-size:25px" ><a  href="#home">Post</a></li></b>
+<nav class="navbar-fixed-top" style="background-color: white;">
+<ul>
+    <li class="u" ><a  href="#home">Post product</a></li>
     
-   <b> <li  style="font-size :25px;float:right"><a href="#about">profile</a></li></b>
-   <b> <li  style="font-size:25px;float:"><a href="#about">sign up/register</a></li></b>
+   <li class="u" style="float:right"><a href="#about">profile</a></li>
+   <li class="u"  style="float:right"><a href="#about">sign up/register</a></li>
 
   </ul>
- 
-<ul style="margin-left:35%">
+  <div class="col-md-4"></div>
+  <div class="col-md-6">
+<ul>
+  
     <li class="o"><a  href="#home">Home</a></li>
     <li class="o"><a href="#news">Trending</a></li>
     <li class="o"><a href="#contact">Contact</a></li>
     <li class="o"><a href="#about">About</a></li>
   </ul>
-  </body>
+  </div>
+  <div class="col-md-2"></div>
+  </nav>
