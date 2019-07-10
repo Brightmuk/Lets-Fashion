@@ -17,9 +17,9 @@ def home(request):
 def profile(request,id):
     current_user = request.user
     user = User.objects.get(id=id)
-    products = Products.objects.filter(owner_id=id)
+    products = Product.objects.filter(owner_id=id)
     if current_user.id == user.id:
-        products = Products.objects.filter(owner_id=id)
+        products = Product.objects.filter(owner_id=id)
         current_user = request.user
         user = User.objects.get(id=id)
         try:
@@ -33,7 +33,7 @@ def profile(request,id):
             
             return redirect(no_profile,id)      
             
-    return render(request,'profile/profile.html',{'user':user,'profile':profile,'current_user':current_user,"productss":products})
+    return render(request,'profile/profile.html',{'user':user,'profile':profile,'current_user':current_user,"products":products})
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request,id):
