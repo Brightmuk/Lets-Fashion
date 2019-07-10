@@ -41,17 +41,29 @@
 .u a{
   text-decoration:none;
   transition: 0.8s;
-  font-size:25px
+  font-size:25px;
+  padding-top:0px
+}
+h1{
+  font-family: 'Tangerine', cursive;
+  margin:0;
+  margin-top:3px;
+}
+.top{
+  background-color: whitesmoke;
+ 
 }
 </style>
 <nav class="navbar-fixed-top" style="background-color: white;">
-<ul>
+<ul class="top">
     <li class="u" ><a  href="#home">Post product</a></li>
-    
-   <li class="u" style="float:right"><a href="#about">profile</a></li>
-   <li class="u"  style="float:right"><a href="#about">sign up/register</a></li>
-
+    {% if user.is_authenticated %}
+   <li class="u" style="float:right"><a href="{% url 'profile' user.id %}">profile</a></li>
+   {% else %}
+   <li class="u"  style="float:right"><a href="accounts/login">sign up/register</a></li>
+   {% endif %}
   </ul>
+  <h1 class="text-center"><b>Lets Fashion</b></h1>
   <div class="col-md-4"></div>
   <div class="col-md-6">
 <ul>
