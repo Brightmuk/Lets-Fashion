@@ -4,10 +4,9 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
    
-    profile_pic = models.ImageField(upload_to = 'photos/', default='DEFAULT VALUE')
+    profile_pic = models.ImageField(upload_to = 'photos/', default='default.png')
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
-    followers = models.ManyToManyField('Profile',related_name="profile_followers",blank=True,default=0)
-    following = models.ManyToManyField('Profile',related_name="profile_following",blank=True,default=0)
+    
     def __str__(self):
         return self.user
     def save_profile(self):
