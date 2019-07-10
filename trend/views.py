@@ -83,10 +83,10 @@ def single_product(request,id):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.image = current_image
-            comment.user = current_user   
+            comment.product = current_product
+            comment.user = request.user   
             comment.save()
-            return redirect(home)
+            
     else:
         form = CommentForm()
 
