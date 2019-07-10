@@ -1,9 +1,32 @@
 {%extends 'base.html'%}
 {% block content %} 
 {{ block.super}}
+
+<style>
+.prods{
+transition: 0.9s;
+}
+.prods:hover{
+ height:120%;
+ width:120%;
+ zoom: 1;
+}
+</style>
+
 <body>
-    <div style="margin-top:150px" class="container">
+    <div style="margin-top:160px" class="container">
         
+        {% for product in products %}
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4 ">
+          <div class="prods">
+        <img style="margin:5px;" src="{{product.image.url}}" class="img-responsive" alt="Image">
+        <p>{{product.product_name}}</p>
+        </div>
+       
+      </div>
+        
+        {% endfor %}
+
     </div>
 </body>
 
