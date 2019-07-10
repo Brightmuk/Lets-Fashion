@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
-from .forms import  UpdateProfileForm,SubmitProductForm
+from .forms import  UpdateProfileForm,SubmitProductForm,CommentForm
 
 def home(request):
     products = Product.objects.all()
@@ -79,4 +79,15 @@ def single_product(request,id):
     current_product = Product.objects.get(id=id)
     comments = Comment.objects.filter(image=id)
 
-    return render(request,'product.html',{'comments':comments,'product':current_product})
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.image = current_image
+            comment.user = current_user   
+            comment.save()
+            return redirect(home)
+    else:
+        form = CommentForm()
+
+    return render(request,'product.html',{'comments':comments,'product':current_product,'form':form})

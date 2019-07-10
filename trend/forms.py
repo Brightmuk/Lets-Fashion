@@ -11,3 +11,8 @@ class SubmitProductForm(forms.ModelForm):
     class Meta:
         model = Product
         exclude = ['owner','pub_date','profile']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['user','image','posted_on']
