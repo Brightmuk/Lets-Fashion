@@ -14,13 +14,64 @@
         background-position: cover;
         margin-top:120px;
     }
+    .glyphicon{
+        position:fixed;
+        margin-top:210px;
+        border-radius:100px;
+        background-color: white;
+        height:10%;
+        width:5%;
+        font-size:20px;
+    }
+    .glyphicon:hover{
+        height:12%;
+        width:6%;
+        font-size:22px;
+    }
+   
 </style>
 <body>
     <div class="intro">
+            <button  type="button" class="btn glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal">
+                 
+                  </button>
 <h1>Fashion</h1>
     </div>
     <div class="container">
-
+<p>isbvnsoufzsofinbozsifnbzosinbzisofbnzsdfnbzdsfnz</p>
     </div>
+
+
+
+
+  <!-- Button to Open the Modal -->
+  
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
 </body>
 {% endblock %}
