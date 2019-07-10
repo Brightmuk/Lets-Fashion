@@ -6,20 +6,25 @@ class Profile(models.Model):
    
     profile_pic = models.ImageField(upload_to = 'photos/', default='default.png')
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
-    
+    contact = models.CharField(max_length = 12)
     def __str__(self):
-        return self.user
+        return self.contact
     def save_profile(self):
         self.save()
     def delete_profile(self):
         self.delete()
 
 class Product(models.Model):
+    CATEGORIES = (
+        ('Menswear', 'Menswear'),
+        ('womenswear', 'womenswear'),
+        ('Generalised', 'Generalised')
+    )
     image = models.ImageField(upload_to = 'photos/', default='DEFAULT VALUE')
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="user_name")
     profile = models.ForeignKey(Profile,null=True)
     product_name = models.CharField(max_length =30)
-    category = models.CharField(max_length =50,choices=((1,'Menswear'),(2,'Womenswear'),(3,'Generalised')))
+    category = models.CharField(max_length =50,choices=CATEGORIES)
     description = models.CharField(max_length =50)
     post_date = models.DateTimeField(auto_now_add=True)
     
@@ -46,3 +51,4 @@ class Comment(models.Model):
         self.save()
     def delete_comment(self):
         self.delete()
+

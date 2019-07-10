@@ -13,7 +13,7 @@ def home(request):
     try:
         profile = Profile.objects.get(user_id=request.user.id)
     except ObjectDoesNotExist:
-            return redirect(update_profile,current_user.id)
+            return redirect(update_profile,request.user.id)
 
     if request.method == 'POST':
         form = SubmitProductForm(request.POST,request.FILES)
@@ -67,7 +67,7 @@ def update_profile(request,id):
         form = UpdateProfileForm()
     return render(request,'profile/update_profile.html',{'user':user,'form':form})
 
-def product_category(request,id):
+def product_category(request,category):
     current_user = request.user
-    products = Product.objects.filter(category=id)
+    products = Product.objects.filter(category=category)
     return render(request,'category.html',{'products':products})
