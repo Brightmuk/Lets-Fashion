@@ -19,17 +19,17 @@ class Product(models.Model):
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="user_name")
     profile = models.ForeignKey(Profile,null=True)
     product_name = models.CharField(max_length =30)
-    category = models.CharField(max_length =50,choices=((1,'Menswear'),(2,'Womenswear')))
+    category = models.CharField(max_length =50,choices=((1,'Menswear'),(2,'Womenswear'),(3,'Generalised')))
     description = models.CharField(max_length =50)
     post_date = models.DateTimeField(auto_now_add=True)
     
      
     def __str__(self):
-        return self.image_name
+        return self.product_name
 
-    def save_image(self):
+    def save_prod(self):
         self.save()
-    def delete_image(self):
+    def delete_prod(self):
         self.delete()
 
 class Comment(models.Model):
