@@ -58,7 +58,9 @@ h1{
 <ul class="top">
     <li class="u" ><a  href="#home">Post product</a></li>
     {% if user.is_authenticated %}
-   <li class="u" style="float:right"><a href="{% url 'profile' user.id %}">profile</a></li>
+    <li class="u"  style="float:right"><a href="/logout">Logout</a></li>
+   <li class="u" style="float:right"><a href="{% url 'profile' user.id %}"><img style="height:35px;width:35px;border-radius:100px" src="{{request.user.profile.profile_pic.url}}"> {{request.user.username}}</a></li>
+   
    {% else %}
    <li class="u"  style="float:right"><a href="accounts/login">sign up/register</a></li>
    {% endif %}
@@ -68,7 +70,7 @@ h1{
   <div class="col-md-6">
 <ul>
   
-    <li class="o"><a  href="#home">Home</a></li>
+    <li class="o"><a  href="/">Home</a></li>
     <li class="o"><a href="#news">Trending</a></li>
     <li class="o"><a href="#contact">Contact</a></li>
     <li class="o"><a href="#about">About</a></li>
