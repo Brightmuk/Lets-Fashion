@@ -1,0 +1,56 @@
+{% load static%}
+<head>
+ <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poiret+One|Tangerine&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+</head>
+<style>
+   ul {
+    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+   }
+  
+
+.o {
+  float: left;
+  padding:30px;
+  bottom:0;
+  font-size:32px;
+  font-family: 'Tangerine', cursive;
+}
+
+.o a {
+  display: block;
+  padding-top: 20px;
+  color:rgb(0, 0, 0);
+  text-decoration:none;
+  transition: 0.8s
+} 
+.o a:hover{
+ font-size:20px;
+ color:rgb(44, 44, 44);
+ text-decoration:none;
+}
+ li{
+  font-family: 'Tangerine', cursive;
+ }
+
+</style>
+<body style="position:fixed">
+<ul >
+   <b> <li style="font-size:25px" ><a  href="#home">Post</a></li></b>
+    
+   <b> <li  style="font-size :25px;float:right"><a href="#about">profile</a></li></b>
+   <b> <li  style="font-size:25px;float:"><a href="#about">sign up/register</a></li></b>
+
+  </ul>
+ 
+<ul style="margin-left:35%">
+    <li class="o"><a  href="#home">Home</a></li>
+    <li class="o"><a href="#news">Trending</a></li>
+    <li class="o"><a href="#contact">Contact</a></li>
+    <li class="o"><a href="#about">About</a></li>
+  </ul>
+  </body>
