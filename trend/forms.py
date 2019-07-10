@@ -7,3 +7,7 @@ class UpdateProfileForm(forms.ModelForm):
         model = Profile
         exclude = ['user']
 
+class SubmitProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        exclude = ['owner','pub_date','profile']
