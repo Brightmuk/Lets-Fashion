@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from .forms import  UpdateProfileForm,SubmitProductForm
+
 def home(request):
     try:
         profile = Profile.objects.get(user_id=request.user.id)
@@ -16,11 +17,12 @@ def home(request):
 
     if request.method == 'POST':
         form = SubmitProductForm(request.POST,request.FILES)
+        print(form)
         if form.is_valid():
-            project = form.save(commit=False)
-            project.owner = current_user  
-            project.profile = Profile.objects.get(user_id=id)
-            project.save()
+            product = form.save(commit=False)
+            product.owner = current_user  
+            product.profile = Profile.objects.get(user_id=request.user.id)
+            product.save()
             return redirect(home)
     else:
         form = SubmitProductForm()
@@ -46,7 +48,7 @@ def profile(request,id):
         except ObjectDoesNotExist:
             
             return redirect(no_profile,id)      
-            
+            print(products)  
     return render(request,'profile/profile.html',{'user':user,'profile':profile,'current_user':current_user,"products":products})
 
 @login_required(login_url='/accounts/login/')
@@ -64,3 +66,8 @@ def update_profile(request,id):
     else:
         form = UpdateProfileForm()
     return render(request,'profile/update_profile.html',{'user':user,'form':form})
+
+def product_category(request,id):
+    current_user = request.user
+    products = Product.objects.filter(category=id)
+    return render(request,'category.html',{'products':products})
