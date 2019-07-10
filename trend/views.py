@@ -7,10 +7,24 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
-from .forms import  UpdateProfileForm
+from .forms import  UpdateProfileForm,SubmitProductForm
 def home(request):
+    try:
+        profile = Profile.objects.get(user_id=request.user.id)
+    except ObjectDoesNotExist:
+            return redirect(update_profile,current_user.id)
 
-    return render(request,'home.html')
+    if request.method == 'POST':
+        form = SubmitProductForm(request.POST,request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.owner = current_user  
+            project.profile = Profile.objects.get(user_id=id)
+            project.save()
+            return redirect(home)
+    else:
+        form = SubmitProductForm()
+    return render(request,'home.html',{'form':form})
 
 
 @login_required(login_url='/accounts/login/')
