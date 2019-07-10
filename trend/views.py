@@ -10,6 +10,7 @@ from django.shortcuts import render
 from .forms import  UpdateProfileForm,SubmitProductForm
 
 def home(request):
+    products = Product.objects.all()
     try:
         profile = Profile.objects.get(user_id=request.user.id)
     except ObjectDoesNotExist:
@@ -20,13 +21,13 @@ def home(request):
         print(form)
         if form.is_valid():
             product = form.save(commit=False)
-            product.owner = current_user  
+            product.owner = request.user
             product.profile = Profile.objects.get(user_id=request.user.id)
             product.save()
             return redirect(home)
     else:
         form = SubmitProductForm()
-    return render(request,'home.html',{'form':form})
+    return render(request,'home.html',{'form':form,'products':products})
 
 
 @login_required(login_url='/accounts/login/')
@@ -70,4 +71,12 @@ def update_profile(request,id):
 def product_category(request,category):
     current_user = request.user
     products = Product.objects.filter(category=category)
+    print(products)
     return render(request,'category.html',{'products':products})
+
+
+def single_product(request,id):
+    current_product = Product.objects.get(id=id)
+    comments = Comment.objects.filter(image=id)
+
+    return render(request,'product.html',{'comments':comments,'product':current_product})
