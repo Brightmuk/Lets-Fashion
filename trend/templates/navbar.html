@@ -2,6 +2,9 @@
 <head>
  <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poiret+One|Tangerine&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+<meta charset="utf-8">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <style>
    ul {
@@ -53,13 +56,49 @@ h1{
   background-color: whitesmoke;
  
 }
+@media screen and (max-width: 647px) {
+  .o {
+  float: left;
+  padding:10px;
+  bottom:0;
+  font-size:28px;
+  font-family: 'Tangerine', cursive;
+}
+}
+@media screen and (max-width: 679px) {
+  .o {
+  float: left;
+  padding:5px;
+  bottom:0;
+  font-size:25px;
+  font-family: 'Tangerine', cursive;
+}
+}
+@media screen and (min-width: 679px) {
+  .o {
+  float: left;
+  padding:20px;
+  bottom:0;
+  font-size:32px;
+  font-family: 'Tangerine', cursive;
+}
+}
+@media screen and (max-width: 375px) {
+  .o {
+  float: left;
+  padding:5px;
+  bottom:0;
+  font-size:20px;
+  font-family: 'Tangerine', cursive;
+}
+}
 </style>
 <nav class="navbar-fixed-top" style="background-color: white;">
 <ul class="top">
     <li class="u" ><a  href="#home">Post product</a></li>
     {% if user.is_authenticated %}
     <li class="u"  style="float:right"><a href="/logout">Logout</a></li>
-   <li class="u" style="float:right"><a href="{% url 'profile' user.id %}"><img style="height:35px;width:35px;border-radius:100px" src="{{request.user.profile.profile_pic.url}}"> {{request.user.username}}</a></li>
+   <li class="u" style="float:right"><a href="{% url 'profile' user.id %}">{% if request.user.profile %}<img style="height:35px;width:35px;border-radius:100px" src="{{request.user.profile.profile_pic.url}}">{% endif%} {{request.user.username}}</a></li>
    
    {% else %}
    <li class="u"  style="float:right"><a href="accounts/login">sign up/register</a></li>
@@ -72,9 +111,9 @@ h1{
   
     <li class="o"><a  href="/">Home</a></li>
     <li class="o"><a href="">Trending</a></li>
-    <li class="o"><a href="category/Menswear">Menswear</a></li>
-    <li class="o"><a href="category/womenswear">womenswear</a></li>
-    <li class="o"><a href="category/Generalised">Generalised</a></li>
+    <li class="o"><a href="{% url 'category' 'Menswear' %}">Menswear</a></li>
+    <li class="o"><a href="{% url 'category' 'womenswear' %}">womenswear</a></li>
+    <li class="o"><a href="{% url 'category' 'Generalised' %}">Generalised</a></li>
 
   </ul>
   </div>
