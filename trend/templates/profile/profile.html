@@ -2,7 +2,14 @@
 {% block content %} 
 {{ block.super}}
 
-
+<style>
+.container{
+  font-family: 'Tangerine', cursive;
+}
+.name{
+  font-size:200%
+}
+</style>
 
 <body>
     <div style="margin-top:250px;background-color: white" class="container">
@@ -11,13 +18,13 @@
      
       <div class="col-md-10 col-sm-10 col-xs-12">
         
-          <h4 class="text-center"><strong>Your Posted products</strong></h4>
+          <h1 class="text-center"><strong>Your Posted products</strong></h1>
           <hr>
           {% for product in products %}
           <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4 ">
             <div class="user-projs">
-          <img style="margin:13px;height:100px;width:100px;" src="{{product.image.url}}" class="img-responsive" alt="Image">
-          <p>{{product.product_name}}</p>
+          <img style="margin:13px;" src="{{product.image.url}}" class="img-responsive" alt="Image">
+          <p class="name">{{product.product_name}}</p>
           </div>
          
         </div>

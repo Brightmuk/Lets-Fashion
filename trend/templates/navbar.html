@@ -95,7 +95,11 @@ h1{
 </style>
 <nav class="navbar-fixed-top" style="background-color: white;">
 <ul class="top">
-    <li class="u" ><a  href="#home">Post product</a></li>
+    {% if user.is_authenticated %}
+    <li style="font-size: 300%" ><b>Fashion</b></li>
+    {% else %}
+    <li style="font-size: 300%" ><b>Sign up or login to post a product</b></li>
+    {% endif %}
     {% if user.is_authenticated %}
     <li class="u"  style="float:right"><a href="/logout">Logout</a></li>
    <li class="u" style="float:right"><a href="{% url 'profile' user.id %}">{% if request.user.profile %}<img style="height:35px;width:35px;border-radius:100px" src="{{request.user.profile.profile_pic.url}}">{% endif%} {{request.user.username}}</a></li>
@@ -104,7 +108,7 @@ h1{
    <li class="u"  style="float:right"><a href="accounts/login">sign up/register</a></li>
    {% endif %}
   </ul>
-  <h1 class="text-center"><b>Lets Fashion</b></h1>
+  <h1 style="font-size: 400%"class="text-center"><b>Lets Fashion</b></h1>
   <div class="col-md-4"></div>
   <div class="col-md-6">
 <ul>
@@ -113,8 +117,9 @@ h1{
     <li class="o"><a href="">Trending</a></li>
     <li class="o"><a href="{% url 'category' 'Menswear' %}">Menswear</a></li>
     <li class="o"><a href="{% url 'category' 'womenswear' %}">womenswear</a></li>
-    <li class="o"><a href="{% url 'category' 'Generalised' %}">Generalised</a></li>
-
+    {% if user.is_authenticated %}
+    <li class="o"><a href="{% url 'favourite' request.user.id %}">Generalised</a></li>
+    {% endif %}
   </ul>
   </div>
   <div class="col-md-2"></div>

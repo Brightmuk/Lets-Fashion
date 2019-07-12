@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 
 
 
-make_stream_key = partial(get_random_string, 20)
-
 class Profile(models.Model):
    
     profile_pic = models.ImageField(upload_to = 'photos/', default='default.png')

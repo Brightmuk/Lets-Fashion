@@ -24,20 +24,20 @@ body{
 
 <body>
     <div style="margin-top:20%" class="container">
-        {% if products %}
-        {% for product in products %}
+        {% if favourites %}
+        {% for favourite in favourites %}
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4 ">
-                <a  style="text-decoration:none;"href="{% url 'single_product' product.id %}">
+                <a  style="text-decoration:none;"href="{% url 'single_product' favourite.id %}">
           <div class="prods">
-        <img style="margin:5px;" src="{{product.image.url}}" class="img-responsive" alt="Image">
-        <p class="name">{{product.product_name}}</p>
+        <img style="margin:5px;" src="{{favourite.image.url}}" class="img-responsive" alt="Image">
+        <p class="name">{{favourite.product_name}}</p>
         </div>
        </a>
       </div>
         
         {% endfor %}
         {% else %}
-        <h1 class="text-center"><b>No products in this category yet</b></h1>
+        <h1 class="text-center"><b>No products favourites yet</b></h1>
       {% endif %}
     </div>
 </body>

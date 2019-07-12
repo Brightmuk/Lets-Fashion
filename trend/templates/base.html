@@ -18,7 +18,7 @@
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Alfa+Slab+One|Cinzel|Courgette|Monda|Open+Sans+Condensed:300|Play|Rajdhani|Signika|Stylish&display=swap" rel="stylesheet">
-
+  
   {% endblock %}
 
 </head>
@@ -30,5 +30,33 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      {% bootstrap_javascript %}
     {% endblock %}
+    <style>
+    .footer{
+      bottom:0;
+      height:100%;
+      margin-top:20%;
+      text-align:center;
+      background-color: rgb(238, 237, 237)
+    }
+    p{
+      font-size:25px;
+    }
+    </style>
+    <div class="footer">
+      <div class="container">
+      <div class="col-md-6 col-sm-6 col-xs-d">
+        <h2><b>Contacts us</b></h2>
+       
+        <p>Twitter</p>
+          <p>instagram</p>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-d">
+          <h2><b>Locations</b></h2>
+          <p>Kenya</p>
+          <p>China</p>
+      </div>
+      
+      </div>
+    </div>
 </body>
 </html>
