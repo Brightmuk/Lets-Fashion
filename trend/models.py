@@ -2,10 +2,22 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
+make_stream_key = partial(get_random_string, 20)
+
 class Profile(models.Model):
    
     profile_pic = models.ImageField(upload_to = 'photos/', default='default.png')
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+    CATEGORIES2 = (
+        ('Rocker looks', 'Rocker looks'),
+        ('Tomboy Fashion', 'Tomboy Fashion'),
+        ('Sophisticated Fashion', 'Sophisticated Fashion'),
+        ('Artsy Fashion', 'Artsy Fashion'),
+        ('Casual Fashion', 'Casual Fashion'),
+        ('Vintage Fashion', 'Vintage Fashion'),
+    )
+    your_fashion_taste = models.CharField(max_length=100,choices=CATEGORIES2,default='No style')
     contact = models.CharField(max_length = 12)
     def __str__(self):
         return self.contact
@@ -24,8 +36,17 @@ class Product(models.Model):
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE,related_name="user_name")
     profile = models.ForeignKey(Profile,null=True)
     product_name = models.CharField(max_length =30)
-    category = models.CharField(max_length =50,choices=CATEGORIES)
-    description = models.CharField(max_length =50)
+    gender = models.CharField(max_length =50,choices=CATEGORIES)
+    CATEGORIES2 = (
+        ('Rocker looks', 'Rocker looks'),
+        ('Tomboy Fashion', 'Tomboy Fashion'),
+        ('Sophisticated Fashion', 'Sophisticated Fashion'),
+        ('Artsy Fashion', 'Artsy Fashion'),
+        ('Casual Fashion', 'Casual Fashion'),
+        ('Vintage Fashion', 'Vintage Fashion'),
+    )
+    category = models.CharField(max_length=100,choices=CATEGORIES2,default='No style')
+    description = models.CharField(max_length =50)  
     post_date = models.DateTimeField(auto_now_add=True)
     
      
