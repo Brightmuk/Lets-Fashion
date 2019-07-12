@@ -8,14 +8,13 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from .forms import  UpdateProfileForm,SubmitProductForm,CommentForm
+from .email import send_email
 
 def home(request):
     products = Product.objects.all()
-    try:
-        profile = Profile.objects.get(user_id=request.user.id)
-    except ObjectDoesNotExist:
-            return redirect(update_profile,request.user.id)
-
+    
+    profile = Profile.objects.filter(user_id=request.user.id)
+    receivers = User.objects.all()
     if request.method == 'POST':
         form = SubmitProductForm(request.POST,request.FILES)
         print(form)
@@ -24,10 +23,13 @@ def home(request):
             product.owner = request.user
             product.profile = Profile.objects.get(user_id=request.user.id)
             product.save()
+            if receiver.your_fashion_taste==product.category:   
+                for receiver in receivers:
+                    send_email(receiver.username,receiver.email)
             return redirect(home)
     else:
         form = SubmitProductForm()
-    return render(request,'home.html',{'form':form,'products':products})
+    return render(request,'home.html',{'form':form,'products':products,'profile':profile})
 
 
 @login_required(login_url='/accounts/login/')
@@ -71,7 +73,7 @@ def update_profile(request,id):
 def product_category(request,category):
     current_user = request.user
     products = Product.objects.filter(category=category)
-    print(products)
+    
     return render(request,'category.html',{'products':products})
 
 
@@ -83,11 +85,19 @@ def single_product(request,id):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.product = current_product
+            comment.image = current_product
             comment.user = request.user   
             comment.save()
             
+            return redirect(single_product,id)
     else:
         form = CommentForm()
 
     return render(request,'product.html',{'comments':comments,'product':current_product,'form':form})
+
+def favourite(request,id):
+    profile = Profile.objects.get(user=request.user)
+    favourites = Product.objects.filter(category=profile.your_fashion_taste)
+    print(favourites)
+    return render(request, 'favourite.html',{'favourites':favourites})
+
