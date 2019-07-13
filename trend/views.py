@@ -17,7 +17,7 @@ def home(request):
     try:
         profile = Profile.objects.get(user_id=request.user.id)
     except ObjectDoesNotExist:
-        return redirect(update_profile,current_user.id)
+        return redirect(update_profile,request.user.id)
     
     profile = Profile.objects.filter(user_id=request.user.id)
     receivers = Profile.objects.all()
