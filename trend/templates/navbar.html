@@ -57,51 +57,61 @@ h1{
 }
 .top{
   background-color: whitesmoke;
- 
+
 }
-@media screen and (max-width: 647px) {
+@media screen and (max-width: 1240px) {
   .o {
   float: left;
   padding:10px;
   bottom:0;
+  font-size:30px;
+  font-family: 'Tangerine', cursive;
+}
+}
+@media screen and (max-width: 1000px) {
+  .o {
+  float: left;
+  padding:4px;
+  bottom:0;
   font-size:28px;
+  font-family: 'Tangerine', cursive;
+}
+}
+@media screen and (max-width: 759px) {
+  .o {
+  float: left;
+  padding:12px;
+  bottom:0;
+  font-size:25px;
   font-family: 'Tangerine', cursive;
 }
 }
 @media screen and (max-width: 679px) {
   .o {
   float: left;
-  padding:5px;
+  padding:8px;
   bottom:0;
-  font-size:25px;
-  font-family: 'Tangerine', cursive;
-}
-}
-@media screen and (min-width: 679px) {
-  .o {
-  float: left;
-  padding:20px;
-  bottom:0;
-  font-size:32px;
+  font-size:28px;
   font-family: 'Tangerine', cursive;
 }
 }
 @media screen and (max-width: 375px) {
   .o {
   float: left;
-  padding:5px;
+  padding:3px;
   bottom:0;
   font-size:20px;
   font-family: 'Tangerine', cursive;
 }
 }
+
 </style>
 <nav class="navbar-fixed-top" style="background-color: white;">
 <ul class="top">
     {% if user.is_authenticated %}
     <li style="font-size: 500%;margin:0" ><b>Fashion</b></li>
     {% else %}
-    <li style="font-size: 500%;margin:0" ><b>Sign up or login to post a product</b></li>
+    <li style="font-size: 300%;margin:0" ><b>Sign up or login to post a product</b></li>
     {% endif %}
     {% if user.is_authenticated %}
     <li class="u"  style="float:right"><a href="/logout">Logout</a></li>

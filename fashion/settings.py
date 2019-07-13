@@ -59,6 +59,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fashion.wsgi.application'
 
+LOGIN_REDIRECT_URL='/'
+
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')

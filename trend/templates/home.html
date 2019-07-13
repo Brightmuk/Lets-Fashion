@@ -33,11 +33,10 @@
       
     }
 }
-
-
-    .glyphicon{
+@media screen and (max-height: 100px) {
+  .glyphicon{
         position:fixed;
-        margin-top:20%;
+        margin-top:40%;
         border-radius:100px;
         background-color: rgb(3, 3, 3);
         height:10%;
@@ -48,6 +47,25 @@
         color:white;
    
     }
+}
+
+
+  .glyphicon{
+    position:fixed;
+        margin-top:30%;
+        border-radius:100px;
+        background-color: rgb(3, 3, 3);
+        height:10%;
+        width:5%;
+        font-size:20px;
+        transition:0.5s;
+        z-index:1;
+        color:white;
+   
+   
+
+}
+
     .glyphicon:hover{
       transform: scale(1.1);
         font-size:22px;
@@ -110,6 +128,7 @@ transition: 0.9s;
   right: 35px;
   }
 }
+
 @media screen and (max-width: 891px) {
  .container{
    margin-top:20%
@@ -129,21 +148,12 @@ transition: 0.9s;
 
 </style>
 <body>
-  {% if request.user %}
   
-    {% if profile %}
-    {% else %}
-    <div id="myNav" class="overlay">
- 
-        <div class="overlay-content"><br>
-          <h1 style="color:white;font-size:300%">Please setup your  profile</h1>
-          <a style="font-size:350%"href="{% url 'update_profile' request.user.id %}">{{request.user.username}}</a>
-          
-        </div>
-      </div>
-     
-        {% endif %}
-        {% endif %}
+    
+  
+   
+
+        
     <div class="intro">
       
         <div id="demo" class="carousel slide" data-ride="carousel">
@@ -196,7 +206,7 @@ transition: 0.9s;
   
 
 
-    {% if profile %}
+    {% if request.user %}
     <div class="post-p">
     <button  type="button" class="btn glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal">
     
