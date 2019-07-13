@@ -1,8 +1,6 @@
-# B-instagram
+# B-fashion
 ###### Description
-* B-instagram is a premium version of B-gallery. In B-instagram, the administrator is not the only one with permisions to post pictures but also the other registered users can do the same as long as they have their accounts.
-* It basically a custom made instagram with fewer features compared t the official instagram application.
-* Its simple and easy to use 
+* An application to keep you up to date with fashion depending on your likes , your taste and preferences
 ###### Author
 Bright Mukonesi
 ###### Published
@@ -11,17 +9,17 @@ Bright Mukonesi
 ### Application Functionality
 As a registerd user you can:
 
-1. Make your own profile and edit it theway you want 
-2. Post pictures for other registerd users to view, comment or like
+1. Make your own profile 
+2. Post pictures of products of fashion for other  users to view, comment 
 3. Search for other registerd users and view their profiles
-4. follow other users who can also follow you back
+4. view fashion news
 
 
 
 ### Installations
 
 1. Clone the repository with:
-`git clone https://github.com/Brightmuk/B-instagram`
+`git clone https://github.com/Brightmuk/lets-fashion`
 2. You will then have to unzip the zipped format of the repo.
 
 3. You will need to install all dependencies by running this command:
