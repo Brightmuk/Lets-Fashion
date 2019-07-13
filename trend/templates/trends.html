@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %} 
+{{ block.super}}
+<style>
+
+    h4,strong{
+        font-family: 'Tangerine', cursive;
+        font-size:250%
+    }
+</style>
+<div style="margin-top:20%"  class="container">
+{% for fashion in fashions %}
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8  article-card" style="padding-bottom: 15px;">
+    <img class="img-responsive" src="{{fashion.urlToImage}}" alt="image">
+    <h4>{{fashion.title}}</h4>
+    <p>by <strong> {{fashion.author}}</strong></p>
+    <p>{{fashion.description}}</p>
+    <h5>Created: {{fashion.publishedAt}}</h5>
+    <h4><a href="{{fashion.url}}">Read more</a></h4>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@
 <meta charset="utf-8">
   
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 </head>
 <style>
    ul {
@@ -17,7 +18,9 @@
   
    }
   
-
+a{
+  text-decoration: none;
+}
 .o {
   float: left;
   padding:20px;
@@ -96,9 +99,9 @@ h1{
 <nav class="navbar-fixed-top" style="background-color: white;">
 <ul class="top">
     {% if user.is_authenticated %}
-    <li style="font-size: 300%" ><b>Fashion</b></li>
+    <li style="font-size: 500%;margin:0" ><b>Fashion</b></li>
     {% else %}
-    <li style="font-size: 300%" ><b>Sign up or login to post a product</b></li>
+    <li style="font-size: 500%;margin:0" ><b>Sign up or login to post a product</b></li>
     {% endif %}
     {% if user.is_authenticated %}
     <li class="u"  style="float:right"><a href="/logout">Logout</a></li>
@@ -114,11 +117,11 @@ h1{
 <ul>
   
     <li class="o"><a  href="/">Home</a></li>
-    <li class="o"><a href="">Trending</a></li>
+    <li class="o"><a href="{% url 'trend' %}">Trending</a></li>
     <li class="o"><a href="{% url 'category' 'Menswear' %}">Menswear</a></li>
     <li class="o"><a href="{% url 'category' 'womenswear' %}">womenswear</a></li>
     {% if user.is_authenticated %}
-    <li class="o"><a href="{% url 'favourite' request.user.id %}">Generalised</a></li>
+    <li class="o"><a href="{% url 'favourite' request.user.id %}">Favourites</a></li>
     {% endif %}
   </ul>
   </div>

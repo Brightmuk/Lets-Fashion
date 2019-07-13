@@ -14,10 +14,11 @@
 }
 .glyphicon{
         position:fixed;
-        margin-top:210px;
+        margin-top:300px;
         border-radius:100px;
-        background-color: rgb(235, 232, 232);
+        background-color: rgb(7, 7, 7);
         height:10%;
+        color:white;
         width:5%;
         font-size:20px;
         transition:0.5s
@@ -35,6 +36,9 @@
   .bi{
     font-size:110%
   }
+  .name{
+    font-size:150%
+  }
 </style>
 
 <body>
@@ -48,8 +52,10 @@
                     <img class="img-responsive" style="width:100%;"src="{{product.image.url}}"><br>
     </div>
     <p><img class="post" src="{{product.profile.profile_pic.url}}"><strong>{{product.owner}}</strong></p><br>
+    <p class="name">{{product.description}}</p><hr>
+    {% if profile %}
     <button  type="button" class="btn glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal">
-                 
+        {% endif %}         
         </button>
 </div>
 

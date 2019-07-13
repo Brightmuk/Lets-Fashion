@@ -118,7 +118,7 @@ transition: 0.9s;
 .name {
   text-decoration:none;
   text-align:center;
-  font-size:220%;
+  font-size:320%;
   color:black;
   transition:0.5s
 }
@@ -129,6 +129,7 @@ transition: 0.9s;
 
 </style>
 <body>
+  {% if request.user %}
   
     {% if profile %}
     {% else %}
@@ -142,7 +143,7 @@ transition: 0.9s;
       </div>
      
         {% endif %}
-        
+        {% endif %}
     <div class="intro">
       
         <div id="demo" class="carousel slide" data-ride="carousel">
@@ -192,6 +193,7 @@ transition: 0.9s;
           {% endfor %}
     
     </div>
+  
 
 
     {% if profile %}
