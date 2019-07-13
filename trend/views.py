@@ -14,10 +14,7 @@ from .request import get_news
 
 def home(request):
     products = Product.objects.all()
-    try:
-        profile = Profile.objects.get(user_id=request.user.id)
-    except ObjectDoesNotExist:
-        return redirect(update_profile,request.user.id)
+
     
     profile = Profile.objects.filter(user_id=request.user.id)
     receivers = Profile.objects.all()
