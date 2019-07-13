@@ -9,12 +9,16 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from .forms import  UpdateProfileForm,SubmitProductForm,CommentForm
 from .email import send_email
+from .request import get_news
+
 
 def home(request):
+    
     products = Product.objects.all()
     
     profile = Profile.objects.filter(user_id=request.user.id)
-    receivers = User.objects.all()
+    receivers = Profile.objects.all()
+    
     if request.method == 'POST':
         form = SubmitProductForm(request.POST,request.FILES)
         print(form)
@@ -23,9 +27,9 @@ def home(request):
             product.owner = request.user
             product.profile = Profile.objects.get(user_id=request.user.id)
             product.save()
-            if receiver.your_fashion_taste==product.category:   
-                for receiver in receivers:
-                    send_email(receiver.username,receiver.email)
+            for receiver in receivers:
+                if receiver.your_fashion_taste==product.category:  
+                    send_email(receiver.user.username,receiver.user.email)
             return redirect(home)
     else:
         form = SubmitProductForm()
@@ -78,6 +82,7 @@ def product_category(request,category):
 
 
 def single_product(request,id):
+    profile = Profile.objects.filter(user=request.user.id)
     current_product = Product.objects.get(id=id)
     comments = Comment.objects.filter(image=id)
 
@@ -93,7 +98,7 @@ def single_product(request,id):
     else:
         form = CommentForm()
 
-    return render(request,'product.html',{'comments':comments,'product':current_product,'form':form})
+    return render(request,'product.html',{'comments':comments,'product':current_product,'form':form,'profile':profile})
 
 def favourite(request,id):
     profile = Profile.objects.get(user=request.user)
@@ -101,3 +106,7 @@ def favourite(request,id):
     print(favourites)
     return render(request, 'favourite.html',{'favourites':favourites})
 
+def trend(request):
+    fashions=get_news('fashion')
+
+    return render(request,'trends.html',{'fashions':fashions})
