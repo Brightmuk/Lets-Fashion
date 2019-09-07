@@ -110,3 +110,7 @@ def trend(request):
     fashions=get_news('fashion')
 
     return render(request,'trends.html',{'fashions':fashions})
+
+
+def base_layout(request):
+    return render(request,'base.html')

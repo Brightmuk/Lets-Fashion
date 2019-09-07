@@ -14,7 +14,7 @@ url(r'^$',views.home,name='home'),
  url(r'^product/(\d+)$',views.single_product,name='single_product'),
  url(r'favourite/(\d+)$',views.favourite,name='favourite'),
  url(r'^trend$',views.trend,name='trend'),
- 
+ url(r'base_layout',views.base_layout,name='base_layout')
 ]
 
 if settings.DEBUG:

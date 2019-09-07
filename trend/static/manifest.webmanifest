@@ -1,0 +1,15 @@
+{"dir" : "ltr",
+    "lang" : "en",
+    "name" : "Fashion",
+    "scope" : "/",
+    "display" : "browser",
+    "start_url" : "https://bfashion.herokuapp.com/",
+    "short_name" : "Fashion",
+    "theme_color" : "transparent",
+    "description" : "Fashion website",
+    "orientation" : "any",
+    "background_color" : "transparent",
+    "related_applications" : "",
+    "prefer_related_applications" : "false",
+    "icons" : [
+    ]}
